@@ -13,7 +13,7 @@
 
 /* Outputs the list to stdout.  */
 void print_dll(dll_node_t * head);
-/* Outputs the list to stdout in revers order. */
+/* Outputs the list to stdout in reverse order. */
 void print_reverse_dll(dll_node_t * head);
 /* Prepends a node to the head of the list with the value provided. */
 void push_dll(dll_node_t **head, int value);
@@ -25,6 +25,8 @@ int pop_dll(dll_node_t **head);
 int search_dll(dll_node_t *head, int value);
 /* Deletes a node at a given index, returning its value, else returning -1.  */
 int delete_node_dll(dll_node_t **head, int index);
+/* Reverses the list */
+void reverse(dll_node_t **head);
 /* Deallocates all nodes in the list. */
 void deallocate_dll(dll_node_t *head);
 
@@ -44,7 +46,7 @@ void print_dll(dll_node_t *head)
 	}
 }
 
-/* Outputs the list to stdout in revers order. */
+/* Outputs the list to stdout in reverse order. */
 void print_reverse_dll(dll_node_t *head)
 {
 	if(head != NULL) {
@@ -109,20 +111,6 @@ int pop_dll(dll_node_t **head)
 	return return_value;
 }
 
-/* Deallocates all nodes in the list. */
-void deallocate_dll(dll_node_t *head) 
-{
-	if(head != NULL) {
-		while(head->next != NULL) {
-			head = head->next;
-			free(head->previous);
-		}
-		free(head);
-	}
-	if(head == NULL) {
-		;
-	}
-}
 
 /* Search the list for a value and return the index associated with the first node containing the provided value, else return -1. */
 int search_dll(dll_node_t *head, int value)
@@ -193,6 +181,33 @@ int delete_node_dll(dll_node_t **head, int index)
     return return_value;
 }
 
+/* Reverse the list */
+void reverse(dll_node_t **head)
+{
+    dll_node_t * temp;
+    while((*head)->next != NULL) {
+        temp = (*head)->next;
+        (*head)->next = (*head)->previous;
+        (*head)->previous = temp;
+        (*head) = temp;
+    }
+    (*head)->next = (*head)->previous;
+    (*head)->previous = NULL;
+}
 
-#endif //DLL_H, 
+/* Deallocates all nodes in the list. */
+void deallocate_dll(dll_node_t *head) 
+{
+	if(head != NULL) {
+		while(head->next != NULL) {
+			head = head->next;
+			free(head->previous);
+		}
+		free(head);
+	}
+	if(head == NULL) {
+		;
+	}
+}
+#endif //DLL_H
 
