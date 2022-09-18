@@ -12,6 +12,23 @@
 #include <stdlib.h>
 
 /* Outputs the list to stdout.  */
+void print_dll(dll_node_t * head);
+/* Outputs the list to stdout in revers order. */
+void print_reverse_dll(dll_node_t * head);
+/* Prepends a node to the head of the list with the value provided. */
+void push_dll(dll_node_t **head, int value);
+/* Appends a node to the tail of the list with the value provided. */
+void append_dll(dll_node_t * head, int value);
+/* Removes the first node and returns the nodes value, else returns -1. */
+int pop_dll(dll_node_t **head);
+/* Search the list for a value and return the index associated with the first node containing the provided value, else return -1. */
+int search_dll(dll_node_t *head, int value);
+/* Deletes a node at a given index, returning its value, else returning -1.  */
+int delete_node_dll(dll_node_t **head, int index);
+/* Deallocates all nodes in the list. */
+void deallocate_dll(dll_node_t *head);
+
+/* Outputs the list to stdout.  */
 void print_dll(dll_node_t *head)
 {
 	if(head != NULL) {
@@ -93,7 +110,7 @@ int pop_dll(dll_node_t **head)
 }
 
 /* Deallocates all nodes in the list. */
-void destroy_dll(dll_node_t *head) 
+void deallocate_dll(dll_node_t *head) 
 {
 	if(head != NULL) {
 		while(head->next != NULL) {
@@ -129,7 +146,7 @@ int search_dll(dll_node_t *head, int value)
 	return error_value;
 }
 
-/* Deletes a node, returning its value, else returning -1.  */
+/* Deletes a node at the given index, returning its value, else returning -1.  */
 int delete_node_dll(dll_node_t **head, int index)
 {
     int return_value = -1;

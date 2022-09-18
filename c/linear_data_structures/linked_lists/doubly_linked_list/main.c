@@ -16,6 +16,6 @@ int main(int argc, char * argv[])
 	delete_node_dll(&head, search_dll(head, 1));
 	print_dll(head);
 
-	destroy_dll(head);
+	deallocate_dll(head);
 	return 0;
 }
