@@ -8,7 +8,7 @@ def push(head, value):
     return new_node
  
 def pop(head):
-    if(head != None):
+    if(head.link != None):
         return node(head.link.link, head.link.value)
 
 def print_sll(head):
