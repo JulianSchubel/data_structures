@@ -3,10 +3,10 @@
 
 int main()
 {
-	sll::singly_linked_list list = sll::singly_linked_list<double>(0);
+	linked_lists::sll list = linked_lists::sll<double>(0);
 	list.push(1);
 	list.push(2);
-	sll::singly_linked_list list2 = list;
+	linked_lists::sll list2 = list;
 	std::cout << list2 << std::endl;
 	list.pop();
 	std::cout << list << std::endl;

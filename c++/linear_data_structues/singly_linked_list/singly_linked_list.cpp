@@ -1,10 +1,10 @@
 #include "./singly_linked_list.hpp"
 
-namespace sll
+namespace linked_lists
 {
 	/* destructor */
 	template <typename t>
-	singly_linked_list<t>::~singly_linked_list()
+	sll<t>::~sll()
 	{
 			while(head != NULL) {
 					struct sll_node<t> *temp = head;
@@ -15,7 +15,7 @@ namespace sll
 
 	/* default constructor */
 	template <typename t>
-	singly_linked_list<t>::singly_linked_list(t value)
+	sll<t>::sll(t value)
 	{
 			head = new(struct sll_node<t>);
 			head->next = NULL;
@@ -25,7 +25,7 @@ namespace sll
 
 	/* copy constructor */
 	template <typename t>
-	singly_linked_list<t>::singly_linked_list(const singly_linked_list<t> &obj)
+	sll<t>::sll(const sll<t> &obj)
 	{
 		this->length = obj.length;
 		this->copy(obj);
@@ -33,7 +33,7 @@ namespace sll
 	
 	/* overloaded assignment operator */
 	template <typename t>
-	singly_linked_list<t>& singly_linked_list<t>::operator =(const singly_linked_list<t>& obj)
+	sll<t>& sll<t>::operator =(const sll<t>& obj)
 	{
 		this->length = obj.length;
 		this->copy(obj);
@@ -41,7 +41,7 @@ namespace sll
 
 
 	template <typename t>
-	void singly_linked_list<t>::push(t value)
+	void sll<t>::push(t value)
 	{
 		struct sll_node<t> *new_node = new(struct sll_node<t>);
 		new_node->next = head;
@@ -51,7 +51,7 @@ namespace sll
 	}
 	
 	template <typename t>
-	t singly_linked_list<t>::pop()
+	t sll<t>::pop()
 	{
 		if(length > 0) {
 			t temp = head->value;	
@@ -67,7 +67,7 @@ namespace sll
 
 	/* overloaded insertion operator */
 	template <typename t>
-	std::ostream& operator <<(std::ostream& outs, const singly_linked_list<t> &obj)
+	std::ostream& operator <<(std::ostream& outs, const sll<t> &obj)
 	{
 		struct sll_node<t> *cursor = obj.head;
 		while(cursor != NULL) {
@@ -79,7 +79,7 @@ namespace sll
 
 	/* conveience copy function */
 	template <typename t>
-	void singly_linked_list<t>::copy(const singly_linked_list<t> &obj)
+	void sll<t>::copy(const sll<t> &obj)
 	{
 		struct sll_node<t> *cursor = obj.head;
 		head = new(struct sll_node<t>);
