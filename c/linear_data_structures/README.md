@@ -1,1 +1,1 @@
-linear data structure: data elments form a sequence
+linear data structure: data elements form a sequence

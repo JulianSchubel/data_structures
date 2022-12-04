@@ -1,1 +1,1 @@
-Trees are all subsets of directed acyclic graphs
+Tree: a subset of directed acyclic graphs
